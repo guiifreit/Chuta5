@@ -1,0 +1,183 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #2d2d2d);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .titulo {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #00df9a;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  
+  .linha {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  
+  .celula {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px solid #3a3a3c;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #1f1f1f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  .correto {
+    background-color: #538d4e;
+    border-color: #538d4e;
+  }
+  
+  .parcial {
+    background-color: #b59f3b;
+    border-color: #b59f3b;
+  }
+  
+  .errado {
+    background-color: #3a3a3c;
+    border-color: #3a3a3c;
+  }
+  
+  .mensagem {
+    font-weight: bold;
+    margin-bottom: 15px;
+    min-height: 28px;
+    color: #ffd166;
+    transition: all 0.3s ease;
+  }
+  
+  .botao-reiniciar {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #00df9a;
+    color: #121213;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  
+  .botao-reiniciar:hover {
+    background-color: #00c184;
+  }
+  
+  @media (max-width: 500px) {
+    .celula {
+      font-size: 1.4rem;
+    }
+  }
+  .mensagem {
+    font-weight: bold;
+    margin-bottom: 15px;
+    min-height: 28px;
+    color: #ffd166;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .mensagem.parabens {
+    background-color: #00df9a;
+    color: #121212;
+    padding: 10px 15px;
+    border-radius: 10px;
+    animation: bounceIn 1s ease forwards;
+    box-shadow: 0 0 10px #00df9a;
+  }
+  
+  /* Flip animation */
+  @keyframes flip {
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: rotateX(90deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes bounceIn {
+    0% { transform: scale(0.6); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    80% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+  
+  .celula {
+    /* já existente */
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+  
+  .celula.animada {
+    animation: flip 0.6s ease forwards;
+  }
+  .botao-reiniciar.animar {
+    animation: girar 0.8s ease-in-out;
+  }
+  
+  @keyframes girar {
+    0% { transform: rotate(0); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  
+  /* Animações para o grid */
+  .grid.animar-saida {
+    animation: fadeOutGrid 0.4s ease forwards;
+  }
+  
+  .grid.animar-entrada {
+    animation: fadeInGrid 0.5s ease forwards;
+  }
+  
+  @keyframes fadeOutGrid {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+  }
+  
+  @keyframes fadeInGrid {
+    from { opacity: 0; transform: scale(1.05); }
+    to { opacity: 1; transform: scale(1); }
+  }
